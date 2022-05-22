@@ -1,0 +1,10 @@
+sort(a.begin(),a.end());
+    long long i=0,j=m-1,sum=0,msum=INT_MAX;
+    if(m==n)
+    return a[n-1]-a[0];
+    for(long long k=0;k<=n-m;k++,j++)
+    {
+        sum=a[j]-a[k];
+        msum=min(msum,sum);
+    }
+    return msum;
