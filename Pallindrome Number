@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        
+        if( x<0 )
+            return 0;
+        
+        // to store original value used unsigned as numbers will be positive
+        unsigned reverse(0);
+        unsigned original(x);
+        
+        
+        // to reverse the number
+        while( x!=0 ){
+            
+            //multiply every time with 10 to move units place to tens hundreds
+            //and add units place(x%10)
+            reverse= reverse*10 + x%10;
+            x/=10;
+            
+        }
+        
+        
+        //return true if reverse is correct or false in not equal case
+        return original==reverse;
+        
+        
+        
+    }
+};
