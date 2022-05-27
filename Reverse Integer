@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int reverse(int x) {
+        
+        
+        
+        
+        int32_t val= x;
+        int64_t rev = 0;
+        
+        while(val)
+        {
+            if(rev*10 > INT32_MAX || rev*10 < INT32_MIN)
+                return 0;
+            rev = rev*10 + val%10;
+            val/=10;
+        }
+        
+        return rev;
+        
+        
+        
+    }
+};
