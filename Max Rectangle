@@ -1,0 +1,54 @@
+int maxh(int arr[],int n){
+       stack<int> st;
+       int ans=-1;
+       int tp,temp;
+       int i=0;
+       while(i<n){
+           if(st.empty() or arr[st.top()]<=arr[i]){
+               st.push(i);
+               i++;
+           }
+           else{
+               tp=st.top();
+               st.pop();
+               if(st.empty()){
+                   temp=arr[tp]*i;
+               }
+               else{
+                   temp=arr[tp]*(i-st.top()-1);
+               }
+               ans=max(ans,temp);
+           }
+       }
+       while(!st.empty()){
+           tp=st.top();
+           st.pop();
+           if(st.empty()){
+               temp=arr[tp]*i;
+           }
+           else{
+               temp=arr[tp]*(i-st.top()-1);
+           }
+           ans=max(ans,temp);
+       }
+       return ans;
+   }
+   int maxArea(int M[MAX][MAX], int n, int m){
+       int arr[m]={0};
+       int temp;
+       int ans=-1;
+      // int ans=maxh(M[0],m);
+       for(int i=0;i<n;i++){
+           for(int j=0;j<m;j++){
+               if(M[i][j]==0){
+                   arr[j]=0;
+               }
+               else{
+                   arr[j]++;
+               }
+           }
+           temp=maxh(arr,m);
+           ans=max(ans,temp);
+       }
+       return ans;
+   }
