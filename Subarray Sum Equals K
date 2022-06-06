@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        
+        
+        int n = nums.size(), ans = 0;
+        vector<int> preSum(n);     
+        unordered_map<int, int> ump;
+        
+        preSum[0] = nums[0];
+        for(int i=1; i<n; i++){
+            preSum[i] = preSum[i-1] + nums[i];
+        }
+        
+        for(auto it:preSum){
+            if(it == k){
+                ans++;
+            }
+            
+            if(ump.find(it-k) != ump.end()){
+                ans += ump[it-k];
+            }
+            
+            ump[it]++;
+        }
+        
+        return ans;
+    }
+};
